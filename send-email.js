@@ -1,20 +1,21 @@
 const nodemailer = require('nodemailer');
-
 const transporter = nodemailer.createTransport({
-    host: 'localhost',
-    port: 4321
-})
-transporter.sendMail(
-    {
-        from: "camargocarla0508@gmail.com",
-        to: "weslley2106@gmail.com",
-        subject: "Ola",
-        text: "Ola mundo!",
-    },
-    (err, info) => {
-        if(err){
-            console.log(err);
-        }
-        console.log("Mensagem enviada: ", info);
+    service: 'gmail', //Exemplo de DNS
+    auth: {
+        user: 'teste@exemplo.com',
+        pass: 'mypassWord'
     }
-)
+});
+const conf = {
+    from: 'teste@exemplo.com',
+    to: 'exemplo@teste.com', 
+    subject: 'Hello World',
+    html: '<p>Hello World!!</p>'
+}
+transporter.sendMail(conf, (error, info) => {
+    if(error){
+        console.log(error)
+    }else{
+        console.log(info)
+    }
+});

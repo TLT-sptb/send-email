@@ -2,7 +2,7 @@ const SMTPServer = require('smtp-server').SMTPServer;
 const PORT = 4321;
 
 const server = new SMTPServer({
-    disabledCommands: ["STARTTLS", "AUTH"],
+    secure: true,
     logger: true
 });
 
